@@ -13,7 +13,7 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
-  // base : "/vue-news-page/dist/",
+  base : "/vue-news-page/dist/",
 })
 module.exports = {
   publicPath: process.env.NODE_ENV === 'production'
