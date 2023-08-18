@@ -12,13 +12,17 @@ const total = reactive({
 const data = ref({})
 const error = ref([])
 
-let api = 'http://flems.github.io/test/api/news/';
+let api = 'https://flems.github.io/test/api/news/';
+
+const newsArr = ref([]);
+
 
 function getData(page) {
 fetch(`${api}${page}`)
     .then((res) => res.json())
     .then((json) => { data.value = json;
       total.value=data.value.nav.total;
+      newsArr.value = [...newsArr.value, ...data.value.items];
     })
     .catch((err) => (error.value = err))
 }
@@ -33,7 +37,7 @@ getData(current.value);
 <template>
   <section class="news">
     <div class="news__flex">
-        <Card v-for="newsItem in data.items" :newsItem="newsItem"/>
+        <Card v-for="newsItem in newsArr" :newsItem="newsItem"/>
     </div>
     <div class="news__button-container">
       <button v-show="(current.value<total.value)" @click="current.value+=1" class="news__button">загрузить ещё</button>

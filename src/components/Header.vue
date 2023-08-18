@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <img src="/public/logo.svg" alt="Logo">
+    <img class="header__logo" src="/public/logo.svg" alt="Logo">
   </header>
 </template>
 
