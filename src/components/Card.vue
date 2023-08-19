@@ -8,6 +8,10 @@
   const dateDay = moment(humanDate).format('DD');
   const dateMonth = moment(humanDate).format('MMMM');
   const dateYear = moment(humanDate).format('YYYY');
+
+  const parcedText = props.newsItem.previewText
+  const cleanedText = parcedText.replace(/\&nbsp;/g, " ");
+
 </script>
 
 <template>
@@ -28,7 +32,7 @@
         </div>
       </div>
       <h4>{{ newsItem.name }}</h4>
-      <p>{{ newsItem.previewText }}</p>
+      <p>{{ cleanedText }}</p>
     </div>
     <div class="card__badge-container">
       <div class="card__badge">{{ newsItem.type.value}}</div>
@@ -45,7 +49,7 @@
 .card__date {margin-bottom:16px;display:flex;color:#A1A7B5}
 .card__date-day {font-size:36px;font-weight:400;line-height:36px;letter-spacing:0em;text-align:left}
 .card__date-rest {margin-left:4px;display:block;font-size:15px;font-weight:700;line-height:17px;letter-spacing:-0.01em;text-align:left}
-.card__badge-container {position:absolute;bottom:1px;left:2px;padding:0 32px;height:92px;width:99%;background-color:white;
+.card__badge-container {position:absolute;bottom:1px;left:2px;padding:0 32px;height:92px;width:530px;background-color:white;
 display:flex;align-items:center;border-radius:16px;border:2px solid transparent}
 .card__badge {padding:4px 16px 4px 16px;border-radius:360px;background-color:#F0F6FE}
 .card h4 {display:block;font-size:22px;font-weight:400;line-height:26px;letter-spacing:0em;text-align:left;color:#0C5BEF;margin-bottom:16px}
